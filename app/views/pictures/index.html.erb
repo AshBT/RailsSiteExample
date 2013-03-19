@@ -1,0 +1,17 @@
+<h2>
+	<em>Hello from
+		<a href="mailto:ashley.beattie@gmail.com">Ashley</a> And 
+		<a href="mailto:nickjoegray@gmail.com">Nick</a>
+	</em>
+</h2>
+
+<h3 class="fav_tings">These are a few of our favourite things.</h3>
+
+<%- @pictures.each do |entry| %>		
+	<p>
+		<p class="title"><%= entry[:title] %></p>
+		<img src="<%= entry[:url] %>" class ="picture">
+		<p class="artist">Artist: <%= entry[:artist] %></p>
+	</p>
+	<br>
+<% end %>
