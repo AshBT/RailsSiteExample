@@ -1,4 +1,4 @@
-<h2>
+<!-- <h2>
 	<em>Hello from
 		<a href="mailto:ashley.beattie@gmail.com">Ashley</a> And 
 		<a href="mailto:nickjoegray@gmail.com">Nick</a>
@@ -14,4 +14,12 @@
 		<p class="artist">Artist: <%= entry[:artist] %></p>
 	</p>
 	<br>
+<% end %> -->
+
+<h1>Pictures</h1>
+
+<% @pictures.each do |picture| %>
+	<h2><%= picture.title %></h2>
+	<p><%= picture.artist %></p>
+	<img src="<%= picture.url %>">
 <% end %>

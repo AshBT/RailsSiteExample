@@ -1,15 +1,25 @@
 Photogrr::Application.routes.draw do
 
-#index is a method in the pictures controller  
-get 'pictures' => 'pictures#index'  #syntax --> get "route_name" from "<APIENDPOINT>#MethodArgument"
+#index is a method/action in the pictures controller  
+get 'pictures' => 'pictures#index'  #syntax --> get "route_name" ==>(from) "<APIENDPOINT>#MethodArgument or #Action
 
-#new is a method in the pictures controller
+#new is a method/action in the pictures controller
 get 'pictures/new' => 'pictures#new'
 
-#create is a method in the pictures controller
+#new is a method/action in the pictures controller
 post 'pictures' => 'pictures#create'   #syntax --> post "route_name" from <APIENDPOINT>#MethodArgument" 
 
+#show is a method/action in the pictures controllers
 get 'pictures/:id' => 'pictures#show'
+
+
+#get vs post
+## determines the interaction type performed by the user on the website via REST
+## post sends information to the server
+## get receives information from the server
+
+## be careful with the :id 
+
 
 
 

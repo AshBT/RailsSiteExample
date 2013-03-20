@@ -6,10 +6,5 @@ class Picture < ActiveRecord::Base
   #activerecord is a part of rails that lets you interact with your database
   
   # to create a method to add new stuff to the database
-  def create_new_picture(input)
-    
-  
-  end  
-
 end
 
