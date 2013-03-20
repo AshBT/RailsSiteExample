@@ -1,0 +1,26 @@
+<h1>Edit the picture</h1>
+
+<h1> <%= @picture[:title] %> </h1>
+<img src="<%= @picture[:url] %>" class ="picture">
+
+
+<form action="/pictures/<%= @picture.id %>" method="post">
+	
+	<p>
+		<label>Artist</label>
+		<input type="text" name="artist" value="<%= @picture.artist %>">
+	<p/>
+	<p>
+		<label>Title</label>
+		<input type="text" name="title" value="<%= @picture.title %>">
+	</p>
+	<p>
+		<label>URL</label>
+		<input type="text" name="url" value="<%= @picture.url %>">
+	</p>
+	
+	<p>
+		<input type="submit" name="Submit">		
+	</p>
+	
+</form>
