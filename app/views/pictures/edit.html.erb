@@ -4,7 +4,7 @@
 <img src="<%= @picture[:url] %>" class ="picture">
 
 
-<form action="/pictures/<%= @picture.id %>" method="post">
+<form action="/pictures/<%= @picture.id %>" method="POST">
 	
 	<p>
 		<label>Artist</label>
@@ -22,5 +22,10 @@
 	<p>
 		<input type="submit" name="Submit">		
 	</p>
+
+	<p>
+		<a href="/pictures/<%= @picture.id %>/destroy">Delete This Image</a>	
+	</p>
 	
+
 </form>
