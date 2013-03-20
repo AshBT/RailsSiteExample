@@ -1,4 +1,4 @@
-<!-- <h2>
+<h2>
 	<em>Hello from
 		<a href="mailto:ashley.beattie@gmail.com">Ashley</a> And 
 		<a href="mailto:nickjoegray@gmail.com">Nick</a>
@@ -7,19 +7,11 @@
 
 <h3 class="fav_tings">These are a few of our favourite things.</h3>
 
-<%- @pictures.each do |entry| %>		
+<%- @picture.each do |entry| %>		
 	<p>
 		<p class="title"><%= entry[:title] %></p>
 		<img src="<%= entry[:url] %>" class ="picture">
 		<p class="artist">Artist: <%= entry[:artist] %></p>
 	</p>
 	<br>
-<% end %> -->
-
-<h1>Pictures</h1>
-
-<% @pictures.each do |picture| %>
-	<h2><%= picture.title %></h2>
-	<p><%= picture.artist %></p>
-	<img src="<%= picture.url %>">
 <% end %>
