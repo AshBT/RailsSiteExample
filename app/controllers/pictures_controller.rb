@@ -1,15 +1,25 @@
 class PicturesController < ApplicationController
 
-	before_filter :load_pictures
+	before_filter :load_pictures  #this loads what is behind the :load_pictures method immediately, making it available to further methods
+	
 
-	# def index
-	# 	@greeting = "Hello World"		
-	# end
+	def index
+		@greeting = "Hello World"		
+	end
 
 	def show
 		@picture = @pictures[params[:id].to_i]
-		
 	end
+
+  def create
+    #the following action creates a basic template, without having one already created
+    render :text => "Saving a picture.  Url:  #{params[:url]}.  Title: #{params[:title]}.  Artist: #{params[:artist]}"
+  end
+
+  def new
+    
+  end
+
 
 	def load_pictures
 		@pictures = [
@@ -33,6 +43,11 @@ class PicturesController < ApplicationController
 		:url => 'http://pcdn.500px.net/9107825/aefa8eb17e4e77fc0f97dca91eda08a37a33d661/4.jpg'
 		},		
 
+
+    {:title => "Chicks getting bashed by sheep",
+    :artist => "Farmer John",
+    :url => 'http://i.imgur.com/ULeQ8Uw.jpg'
+    },    
 
 		{:title => "Saturday Love:  SLS AMG - Wide Open for Bidness",
 		:artist => "Mercedes-Benzito",

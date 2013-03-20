@@ -1,8 +1,17 @@
 Photogrr::Application.routes.draw do
-  
+
+#index is a method in the pictures controller  
 get 'pictures' => 'pictures#index'  #syntax --> get "route_name" from "<APIENDPOINT>#MethodArgument"
 
+#new is a method in the pictures controller
+get 'pictures/new' => 'pictures#new'
+
+#create is a method in the pictures controller
+post 'pictures' => 'pictures#create'   #syntax --> post "route_name" from <APIENDPOINT>#MethodArgument" 
+
 get 'pictures/:id' => 'pictures#show'
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
