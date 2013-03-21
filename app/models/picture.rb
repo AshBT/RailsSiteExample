@@ -9,5 +9,9 @@ class Picture < ActiveRecord::Base
   # in this case mass-assignment can be applied to :title and :artist
   
   # to create a method to add new stuff to the database
+  validates :title, :presence => true
+  validates :artist, :presence => true
+  validates :url, :presence => true
+  
 end
 

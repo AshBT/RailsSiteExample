@@ -9,9 +9,7 @@ class PicturesController < ApplicationController
 	end
 
   def edit
-    @picture = Picture.find params[:id] 
-    
-    
+    @picture = Picture.find params[:id]     
   end
 
   def destroy
@@ -39,8 +37,13 @@ class PicturesController < ApplicationController
 
   def create
     #the following line will create a new entry in the database #create returns an instance of the variable, not a boolean
-    if Picture.create(params[:picture]) 
+    @picture = Picture.new(params[:picture])
+    
+    if @picture.save #this allows you to save the information that has been entered 
       redirect_to pictures_path    #redirect to somewhere when you're successful  #pictures_path is the route for pictures
+    else
+      flash.now[:error] = @picture.errors
+      render :new   #render jumps to another method in the same file
     end
   end
 

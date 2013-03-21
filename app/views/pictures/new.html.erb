@@ -1,19 +1,33 @@
 <h1>Add a picture</h1>
 
-<!-- #create a form for a picture --- iterate over the items -->
+<!-- #create a form for a picture --by iterating over the items -->
 
 <%= form_for @picture do |f| %>  
 	<p>
 		<label>Artist</label>
-		<%= f.text_field "artist" %>
+		<% if @picture.errors.messages %>
+			<p><%= f.text_field "artist"%>BAD</p>
+		<% else %>
+			<p><%= f.text_field "artist"%>GOOD</p>
+		<% end %>
 	<p/>
+
 	<p>
 		<label>Title</label>
-		<%= f.text_field "title" %>
+		<% if @picture.errors.messages %>
+			<p><%= f.text_field "title"%>BAD</p>
+		<% else %>
+			<p><%= f.text_field "title"%>GOOD</p>
+		<% end %>
 	</p>
 	<p>
 		<label>URL</label>
-		<%= f.text_field "url" %>
+		<% puts @picture.errors.messages %>
+		<% if @picture.errors.messages %>
+			<p><%= f.text_field "url"%>BAD</p>
+		<% else %>
+			<p><%= f.text_field "url"%>GOOD</p>
+		<% end %>
 	</p>
 	
 	<p>
