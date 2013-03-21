@@ -1,3 +1,5 @@
+<!-- Whenever you want to do something for all of the pages, modify this file. --> 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,9 +8,35 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
+
+
 <body>
+<div class="sizer">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="">
+                <a href="<%= pictures_path %>">Home</a>
+              </li>
+              <li class="">
+                <a href="<%= new_picture_path %>">Create A New Image</a>
+              </li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<%= yield %>
-
+	<div class="nav_spacer">
+		<%= yield %>
+	</div>
+	</div <!-- class="sizer" -->>	
 </body>
 </html>

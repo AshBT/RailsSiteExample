@@ -1,28 +1,6 @@
-<h1> <%= @picture[:title] %> </h1>
-<img src="<%= @picture[:url] %>" class ="picture">
-
-
 <h1>Show the picture</h1>
 
 <h1> <%= @picture[:title] %> </h1>
 <img src="<%= @picture[:url] %>" class ="picture">
-
-<%= form_for @picture do |f| %>  
-	<p>
-		<label>Artist</label>
-		<%= f.text_field "artist" %>
-	<p/>
-	<p>
-		<label>Title</label>
-		<%= f.text_field "title" %>
-	</p>
-	<p>
-		<label>URL</label>
-		<%= f.text_field "url" %>
-	</p>
-	
-	<p>
-		<%= f.submit "Update" %>		
-	</p>
-	
-<% end %>
+<h1> <%= @picture[:artist] %> </h1>		
+<%= button_to "Edit This Image", edit_picture_path(@picture), :method => :get %>  #creates a button 

@@ -5,15 +5,25 @@
 	</em>
 </h2>
 
+
+<%= link_to "New Picture", new_picture_path %>
+
+
 <h3 class="fav_tings">These are a few of our favourite things.</h3>
 
-<a href="wherever" class="btn">This is a button</a>	
+<a href='<%= new_picture_path %>' class="btn">Create a New Image</a>	
 
 <%- @picture.each do |entry| %>		
 	<p>
 		<p class="title"><%= entry[:title] %></p>
-		<img src="<%= entry[:url] %>" class ="picture">
+		<a href='<%= picture_path(entry)%>'><img src="<%= entry[:url] %>" class ="picture"></a>
 		<p class="artist">Artist: <%= entry[:artist] %></p>
+		<a href='<%= edit_picture_path(entry[:id]) %>' class="btn">Edit This Image</a>
+		<%= button_to "Edit", edit_picture_path(entry) %>
+		<%= link_to picture_path(entry) do %>
+		<img src="<%= entry.url %>">
+		<% end %>
+					
 	</p>
 	<br>
 <% end %>
