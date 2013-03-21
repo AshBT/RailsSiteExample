@@ -5,35 +5,40 @@ class PicturesController < ApplicationController
 	@pictures = Picture.all  #instantiate the database and assign it to the @pictures variable
   
 	def index
-		@greeting = "Hello World"		
+    @picture = Picture.all					
 	end
+
+  def edit
+    @picture = Picture.find params[:id] 
+  end
+
+  def destroy
+    @picture = Picture.find params[:id]
+    @picture.destroy()
+  end
+
+  def update
+    @picture = Picture.find(params[:id])  #gets a single picture instance from the Picture database
+    if @picture.update_attributes(params[:picture])
+      redirect_to "/pictures/#{@picture.id}"
+    else
+      redirect_to '/pictures'
+    end
+  end
 
 	def show  #check out the routes file to really understand how this is working.  It essentially grabs the html associated with the ID
 		@picture = Picture.find params[:id]  #use the find method to get the object with the certain ID from the database
-		
-		
-		
 	end
 
   def create
-    #the following action creates a basic template, without having one already created, this is good to 
-    
-    #the following line will create a new entry in the database
-    @picture = Picture.new
-    @picture.url = params[:url]
-    @picture.title = params[:title]
-    @picture.artist = params[:artist]
-    success = @picture.save
-    
-    if success
+    #the following line will create a new entry in the database #create returns an instance of the variable, not a boolean
+    if Picture.create(params[:picture]) 
       redirect_to pictures_path    #redirect to somewhere when you're successful  #pictures_path is the route for pictures
-    else
-      render :text => "Saving a picture.  Url:  #{params[:url]}.  Title: #{params[:title]}.  Artist: #{params[:artist]}"
     end
   end
 
   def new
-    
+    @picture = Picture.new    #create a new Picture object    
   end
 
 
@@ -79,5 +84,3 @@ class PicturesController < ApplicationController
 	end
 
 end 
-
-
