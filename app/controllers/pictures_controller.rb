@@ -10,19 +10,26 @@ class PicturesController < ApplicationController
 
   def edit
     @picture = Picture.find params[:id] 
+    
+    
   end
 
   def destroy
     @picture = Picture.find params[:id]
-    @picture.destroy()
+    destroyed_picture = @picture.destroy()
+    if destroyed_picture     
+      redirect_to pictures_path
+    else
+      redirect_to picture_path(@picture.id)
+    end
   end
 
   def update
     @picture = Picture.find(params[:id])  #gets a single picture instance from the Picture database
-    if @picture.update_attributes(params[:picture])
-      redirect_to "/pictures/#{@picture.id}"
+    if @picture.update_attributes(params[:picture])  #this essentially polls
+      redirect_to @picture
     else
-      redirect_to '/pictures'
+      redirect_to pictures_path
     end
   end
 
@@ -40,7 +47,6 @@ class PicturesController < ApplicationController
   def new
     @picture = Picture.new    #create a new Picture object    
   end
-
 
 	def load_pictures
 		
