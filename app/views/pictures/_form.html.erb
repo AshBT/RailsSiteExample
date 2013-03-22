@@ -1,0 +1,39 @@
+<div class ="errors">
+	<%= flash[:error] %>
+</div>
+
+<%= form_for @picture do |f| %>  
+	<p>
+		<label>Artist</label>
+		<p><%= f.text_field "artist"%></p>
+		<% if @picture.errors.messages[:artist]%>
+			<%= @picture.errors.messages[:artist][0]%>
+		<% end %>
+	<p/>
+
+	<p>
+		<label>Title</label>
+		<p><%= f.text_field "title"%></p>
+		<% if @picture.errors.messages[:title]%>
+			<p><%= @picture.errors.messages[:title][0]%></p>
+		<% end %>
+	</p>
+	<p>
+		<label>URL</label>
+		<%= @picture.errors[:url].join(" ")%>
+			<p><%= f.text_field "url"%></p>
+	</p>
+	
+	<p>
+		<label for=picture_copyrighted>Photo Is Copyrighted?</label>
+		<%= @picture.errors[:copyrighted].join(" ")%>
+			<p><%= f.check_box "copyrighted"%></p>  
+			<p><%= f.label "copyrighted", "Photo is Copyrighted"%></p>  <!-- This one, matched to the label for makes the text clickable -->
+	</p>
+	
+	
+	<p>
+		<%= f.submit "Save" %>		
+	</p>
+	
+<% end %>

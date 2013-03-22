@@ -5,13 +5,18 @@
 class Picture < ActiveRecord::Base  
   #activerecord is a part of rails that lets you interact with your database
   
-  attr_accessible :title, :artist, :url #don't confuse this with accessor, this is the way of white-listing attributes, allowing mass assignment
+  attr_accessible :title, :artist, :url, :copyrighted #don't confuse this with accessor, this is the way of white-listing attributes, allowing mass assignment
   # in this case mass-assignment can be applied to :title and :artist
   
   # to create a method to add new stuff to the database
   validates :title, :presence => true
   validates :artist, :presence => true
-  validates :url, :presence => true
+  validates :url, :format => {
+    :with => /^http./, 
+    :message => "please enter a valid url"
+    }  
+  
+  
   
 end
 

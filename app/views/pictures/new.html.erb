@@ -1,32 +1,9 @@
 <h1>Add a picture</h1>
 
-<!-- #create a form for a picture --by iterating over the items -->
+<div class ="errors">
+	<%= flash[:error] %>
+</div>
 
-<%= form_for @picture do |f| %>  
-	<p>
-		<label>Artist</label>
-		<% if @picture.errors.messages %>
-			<p><%= f.text_field "artist"%>BAD</p>
-		<% else %>
-			<p><%= f.text_field "artist"%>GOOD</p>
-		<% end %>
-	<p/>
+<!-- #this is going to look for the file with an underscore, partials always start with an underscore in their name -->
+<%= render :partial => "form" %>  
 
-	<p>
-		<label>Title</label>
-		<% if @picture.errors.messages[:title]%>
-			<p><%= @picture.errors.messages[:title][0]%>BAD</p>
-			<p><%= f.text_field "url"%></p>
-		<% end %>
-	</p>
-	<p>
-		<label>URL</label>
-		<%= @picture.errors[:url].join(" ")%>
-			<p><%= f.text_field "url"%></p>
-	</p>
-	
-	<p>
-		<%= f.submit "Save" %>		
-	</p>
-	
-<% end %>

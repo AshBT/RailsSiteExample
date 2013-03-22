@@ -1,11 +1,11 @@
 class PicturesController < ApplicationController
 
-	before_filter :load_pictures  #this loads what is behind the :load_pictures method immediately, making it available to further methods
+	#before_filter :load_pictures  #this loads what is behind the :load_pictures method immediately, making it available to further methods
 	
-	@pictures = Picture.all  #instantiate the database and assign it to the @pictures variable
+	#@pictures = Picture.all  #instantiate the database and assign it to the @pictures variable
   
 	def index
-    @picture = Picture.all					
+    @pictures = Picture.all					
 	end
 
   def edit
@@ -13,19 +13,19 @@ class PicturesController < ApplicationController
   end
 
   def destroy
-    @picture = Picture.find params[:id]
-    destroyed_picture = @picture.destroy()
-    if destroyed_picture     
-      redirect_to pictures_path
+    @picture = Picture.find params[:id]  #first it looks for the parameterized picture and sets it to the Class Variable @picture
+    destroyed_picture = @picture.destroy()   #it creates a variable to represent the executed command
+    if destroyed_picture     #if it executed successfully, then:
+      redirect_to pictures_path   #redirect to the root pictures path
     else
-      redirect_to picture_path(@picture.id)
+      redirect_to picture_path(@picture.id)   #otherwise, redirect to the picture path for the picture itself
     end
   end
 
   def update
-    @picture = Picture.find(params[:id])  #gets a single picture instance from the Picture database
-    if @picture.update_attributes(params[:picture])  #this essentially polls
-      redirect_to @picture
+    @picture = Picture.find(params[:id])  #gets the parameterized picture instance from the Picture database
+    if @picture.update_attributes(params[:picture])  #the update method returns a hash with the new parameters, keyed by the picture
+      redirect_to @picture 
     else
       redirect_to pictures_path
     end
@@ -42,7 +42,7 @@ class PicturesController < ApplicationController
     if @picture.save #this allows you to save the information that has been entered 
       redirect_to pictures_path    #redirect to somewhere when you're successful  #pictures_path is the route for pictures
     else
-      flash.now[:error] = @picture.errors  
+      flash.now[:error] = "Could not save the picture, try again"  
       render :new   #render jumps to another method in the same file
     end
   end
@@ -51,7 +51,7 @@ class PicturesController < ApplicationController
     @picture = Picture.new    #create a new Picture object    
   end
 
-	def load_pictures
+	#def load_pictures
 		
 		# @pictures = [
 		# {:title => "First Love: Horses, Majestic Horses",
@@ -90,6 +90,6 @@ class PicturesController < ApplicationController
 		# }		
 		# ]	
 		
-	end
+	#end
 
 end 
