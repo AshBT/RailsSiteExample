@@ -42,7 +42,7 @@ class PicturesController < ApplicationController
     if @picture.save #this allows you to save the information that has been entered 
       redirect_to pictures_path    #redirect to somewhere when you're successful  #pictures_path is the route for pictures
     else
-      flash.now[:error] = @picture.errors
+      flash.now[:error] = @picture.errors  
       render :new   #render jumps to another method in the same file
     end
   end

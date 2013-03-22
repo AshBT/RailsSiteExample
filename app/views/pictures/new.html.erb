@@ -14,20 +14,15 @@
 
 	<p>
 		<label>Title</label>
-		<% if @picture.errors.messages %>
-			<p><%= f.text_field "title"%>BAD</p>
-		<% else %>
-			<p><%= f.text_field "title"%>GOOD</p>
+		<% if @picture.errors.messages[:title]%>
+			<p><%= @picture.errors.messages[:title][0]%>BAD</p>
+			<p><%= f.text_field "url"%></p>
 		<% end %>
 	</p>
 	<p>
 		<label>URL</label>
-		<% puts @picture.errors.messages %>
-		<% if @picture.errors.messages %>
-			<p><%= f.text_field "url"%>BAD</p>
-		<% else %>
-			<p><%= f.text_field "url"%>GOOD</p>
-		<% end %>
+		<%= @picture.errors[:url].join(" ")%>
+			<p><%= f.text_field "url"%></p>
 	</p>
 	
 	<p>
